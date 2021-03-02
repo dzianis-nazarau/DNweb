@@ -16,7 +16,7 @@ public class RegistrationController {
 
     @GetMapping(value = "/main")
     public String registerForm() {
-        return "mainGood";
+        return "main";
     }
 
 }

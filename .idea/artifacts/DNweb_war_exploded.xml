@@ -31,10 +31,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.11.3" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.3.2" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.3.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.3.2" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.2" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.2" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.4.1" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.4.1" />
           <element id="library" level="project" name="Maven: com.h2database:h2:1.4.200" />
@@ -75,7 +72,6 @@
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-security:2.4.1" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.3.2" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.4.2" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.4.2" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.4.2" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-validation:2.4.1" />
           <element id="library" level="project" name="Maven: org.hibernate.validator:hibernate-validator:6.1.6.Final" />
@@ -86,6 +82,12 @@
           <element id="library" level="project" name="Maven: io.micrometer:micrometer-core:1.6.2" />
           <element id="library" level="project" name="Maven: org.hdrhistogram:HdrHistogram:2.1.12" />
           <element id="library" level="project" name="Maven: org.latencyutils:LatencyUtils:2.0.3" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:5.2.2.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:5.4.2" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.4.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.3.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

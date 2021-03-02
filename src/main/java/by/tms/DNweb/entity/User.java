@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -26,6 +27,12 @@ public class User implements UserDetails {
     private int userage;
     private String gender;
     private String country;
+
+    @OneToMany(mappedBy = "user")
+    private List<Card> cards;
+
+    @OneToMany(mappedBy = "user")
+    private List<Payment> payments;
 
     public User() {
     }
@@ -122,4 +129,19 @@ public class User implements UserDetails {
         return true;
     }
 
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
+    }
 }

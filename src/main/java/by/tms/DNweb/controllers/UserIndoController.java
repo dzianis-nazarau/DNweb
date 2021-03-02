@@ -6,14 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
+public class UserIndoController {
 
     @Autowired
     private UserRepository repository;
 
-    @GetMapping("/welcome")
+    @GetMapping("/useruserInfo")
     public String welcome() {
-        return "welcome";
+        return "userPage";
     }
 
 }
