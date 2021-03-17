@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "chatId",
+      "type": "java.lang.String",
+      "description": "Description for chatId."
+  }
+] }

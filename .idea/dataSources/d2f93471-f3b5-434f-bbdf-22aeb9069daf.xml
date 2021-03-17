@@ -186,63 +186,73 @@
       <CacheSize>32</CacheSize>
       <AutoCreated>1</AutoCreated>
     </sequence>
-    <sequence id="165" parent="4" name="SYSTEM_SEQUENCE_73FCE17A_C001_4F66_BEF9_38F728EFC62F">
+    <sequence id="165" parent="4" name="SYSTEM_SEQUENCE_6EF501F7_922E_4DFB_BC04_4C2E62553EE3">
+      <ObjectId>19</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>32</CacheSize>
+      <AutoCreated>1</AutoCreated>
+    </sequence>
+    <sequence id="166" parent="4" name="SYSTEM_SEQUENCE_73FCE17A_C001_4F66_BEF9_38F728EFC62F">
       <ObjectId>4</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>32</CacheSize>
       <AutoCreated>1</AutoCreated>
     </sequence>
-    <sequence id="166" parent="4" name="SYSTEM_SEQUENCE_B95B9B3E_80F4_4DE1_A60A_9A15D4714FF5">
+    <sequence id="167" parent="4" name="SYSTEM_SEQUENCE_B95B9B3E_80F4_4DE1_A60A_9A15D4714FF5">
       <ObjectId>8</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>32</CacheSize>
       <AutoCreated>1</AutoCreated>
     </sequence>
-    <table id="167" parent="4" name="CARD">
+    <table id="168" parent="4" name="CARD">
       <ObjectId>11</ObjectId>
     </table>
-    <table id="168" parent="4" name="CURRENCY">
+    <table id="169" parent="4" name="CREDIT">
+      <ObjectId>23</ObjectId>
+    </table>
+    <table id="170" parent="4" name="CURRENCY">
       <ObjectId>7</ObjectId>
     </table>
-    <table id="169" parent="4" name="PAYMENT">
-      <ObjectId>17</ObjectId>
+    <table id="171" parent="4" name="PAYMENT">
+      <ObjectId>29</ObjectId>
     </table>
-    <table id="170" parent="4" name="USERS">
+    <table id="172" parent="4" name="USERS">
       <ObjectId>3</ObjectId>
     </table>
-    <column id="171" parent="167" name="ID">
+    <column id="173" parent="168" name="ID">
       <Position>1</Position>
       <DataType>INT|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="172" parent="167" name="TYPE">
+    <column id="174" parent="168" name="TYPE">
       <Position>2</Position>
       <DataType>VARCHAR(128)|0s</DataType>
     </column>
-    <column id="173" parent="167" name="STATUS">
+    <column id="175" parent="168" name="STATUS">
       <Position>3</Position>
       <DataType>VARCHAR(128)|0s</DataType>
     </column>
-    <column id="174" parent="167" name="REST">
+    <column id="176" parent="168" name="REST">
       <Position>4</Position>
       <DataType>DECIMAL(7,2 digit)|0s</DataType>
     </column>
-    <column id="175" parent="167" name="USER_ID">
+    <column id="177" parent="168" name="USER_ID">
       <Position>5</Position>
       <DataType>INT|0s</DataType>
     </column>
-    <column id="176" parent="167" name="CARD_NUMBER">
+    <column id="178" parent="168" name="CARD_NUMBER">
       <Position>6</Position>
       <DataType>VARCHAR(128)|0s</DataType>
     </column>
-    <column id="177" parent="167" name="CURRENCY">
+    <column id="179" parent="168" name="CURRENCY">
       <Position>7</Position>
       <DataType>VARCHAR(3)|0s</DataType>
     </column>
-    <index id="178" parent="167" name="PRIMARY_KEY_B1">
+    <index id="180" parent="168" name="PRIMARY_KEY_B1">
       <ObjectId>13</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>69</SourceTextLength>
@@ -250,19 +260,19 @@
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <index id="179" parent="167" name="CONSTRAINT_1F_INDEX_B">
+    <index id="181" parent="168" name="CONSTRAINT_1F_INDEX_B">
       <ObjectId>15</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>75</SourceTextLength>
       <ColNames>USER_ID</ColNames>
       <AutoCreated>1</AutoCreated>
     </index>
-    <key id="180" parent="167" name="CONSTRAINT_1">
+    <key id="182" parent="168" name="CONSTRAINT_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="181" parent="167" name="CONSTRAINT_1F">
+    <foreign-key id="183" parent="168" name="CONSTRAINT_1F">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USER_ID</ColNames>
       <RefTableName>USERS</RefTableName>
@@ -271,100 +281,179 @@
       <OnDelete>restrict</OnDelete>
       <OnUpdate>restrict</OnUpdate>
     </foreign-key>
-    <column id="182" parent="168" name="ID">
+    <column id="184" parent="169" name="ID">
       <Position>1</Position>
       <DataType>INT|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="183" parent="168" name="BASE_CURRENCY">
+    <column id="185" parent="169" name="CREDIT_NUMBER">
       <Position>2</Position>
       <DataType>INT|0s</DataType>
     </column>
-    <column id="184" parent="168" name="BASE_CURRENCY_NOMINAL">
+    <column id="186" parent="169" name="CURRENCY">
+      <Position>3</Position>
+      <DataType>VARCHAR(3)|0s</DataType>
+    </column>
+    <column id="187" parent="169" name="OPEN_DATE">
+      <Position>4</Position>
+      <DataType>TIMESTAMP|0s</DataType>
+    </column>
+    <column id="188" parent="169" name="CLOSE_DATE">
+      <Position>5</Position>
+      <DataType>TIMESTAMP|0s</DataType>
+    </column>
+    <column id="189" parent="169" name="REPAYMENT_DATE">
+      <Position>6</Position>
+      <DataType>INT|0s</DataType>
+    </column>
+    <column id="190" parent="169" name="CREDIT_LIMIT">
+      <Position>7</Position>
+      <DataType>DECIMAL(7,2 digit)|0s</DataType>
+    </column>
+    <column id="191" parent="169" name="INTEREST_RATE">
+      <Position>8</Position>
+      <DataType>DECIMAL(5,2 digit)|0s</DataType>
+    </column>
+    <column id="192" parent="169" name="USER_ID">
+      <Position>9</Position>
+      <DataType>INT|0s</DataType>
+    </column>
+    <index id="193" parent="169" name="PRIMARY_KEY_E">
+      <ObjectId>24</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <SourceTextLength>70</SourceTextLength>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+      <AutoCreated>1</AutoCreated>
+    </index>
+    <index id="194" parent="169" name="CONSTRAINT_76_INDEX_E">
+      <ObjectId>26</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <SourceTextLength>77</SourceTextLength>
+      <ColNames>USER_ID</ColNames>
+      <AutoCreated>1</AutoCreated>
+    </index>
+    <key id="195" parent="169" name="CONSTRAINT_7">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="196" parent="169" name="CONSTRAINT_76">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USER_ID</ColNames>
+      <RefTableName>USERS</RefTableName>
+      <RefKeyName>PRIMARY_KEY_61</RefKeyName>
+      <RefColNames>ID</RefColNames>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>restrict</OnUpdate>
+    </foreign-key>
+    <column id="197" parent="170" name="ID">
+      <Position>1</Position>
+      <DataType>INT|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="198" parent="170" name="BASE_CURRENCY">
+      <Position>2</Position>
+      <DataType>VARCHAR(3)|0s</DataType>
+    </column>
+    <column id="199" parent="170" name="BASE_CURRENCY_NOMINAL">
       <Position>3</Position>
       <DataType>INT|0s</DataType>
     </column>
-    <column id="185" parent="168" name="RATED_CURRENCY">
+    <column id="200" parent="170" name="RATED_CURRENCY">
       <Position>4</Position>
-      <DataType>INT|0s</DataType>
+      <DataType>VARCHAR(3)|0s</DataType>
     </column>
-    <column id="186" parent="168" name="RATE">
+    <column id="201" parent="170" name="RATE">
       <Position>5</Position>
       <DataType>DECIMAL(7,5 digit)|0s</DataType>
     </column>
-    <column id="187" parent="168" name="BUY_RATE">
+    <column id="202" parent="170" name="BUY_RATE">
       <Position>6</Position>
       <DataType>DECIMAL(7,5 digit)|0s</DataType>
     </column>
-    <column id="188" parent="168" name="SALE_RATE">
+    <column id="203" parent="170" name="SALE_RATE">
       <Position>7</Position>
       <DataType>DECIMAL(7,5 digit)|0s</DataType>
     </column>
-    <index id="189" parent="168" name="PRIMARY_KEY_5">
+    <index id="204" parent="170" name="PRIMARY_KEY_C0">
       <ObjectId>9</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <SourceTextLength>73</SourceTextLength>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+      <AutoCreated>1</AutoCreated>
+    </index>
+    <key id="205" parent="170" name="CONSTRAINT_5">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="206" parent="171" name="ID">
+      <Position>1</Position>
+      <DataType>INT|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="207" parent="171" name="USER_ID">
+      <Position>2</Position>
+      <DataType>INT|0s</DataType>
+    </column>
+    <column id="208" parent="171" name="SOURCE_CARD_NUMBER">
+      <Position>3</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="209" parent="171" name="PAYEE">
+      <Position>4</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="210" parent="171" name="AMOUNT">
+      <Position>5</Position>
+      <DataType>DECIMAL(7,2 digit)|0s</DataType>
+    </column>
+    <column id="211" parent="171" name="DESCRIPTION">
+      <Position>6</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="212" parent="171" name="DATE">
+      <Position>7</Position>
+      <DataType>TIMESTAMP|0s</DataType>
+    </column>
+    <column id="213" parent="171" name="CODE">
+      <Position>8</Position>
+      <DataType>VARCHAR(4)|0s</DataType>
+    </column>
+    <column id="214" parent="171" name="STATUS">
+      <Position>9</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="215" parent="171" name="TYPE">
+      <Position>10</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <index id="216" parent="171" name="PRIMARY_KEY_40">
+      <ObjectId>30</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>72</SourceTextLength>
       <ColNames>ID</ColNames>
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <key id="190" parent="168" name="CONSTRAINT_5">
+    <index id="217" parent="171" name="CONSTRAINT_FB_INDEX_4">
+      <ObjectId>32</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="191" parent="169" name="ID">
-      <Position>1</Position>
-      <DataType>INT|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="192" parent="169" name="USER_ID">
-      <Position>2</Position>
-      <DataType>INT|0s</DataType>
-    </column>
-    <column id="193" parent="169" name="SOURCE_CARD_NUMBER">
-      <Position>3</Position>
-      <DataType>VARCHAR(128)|0s</DataType>
-    </column>
-    <column id="194" parent="169" name="PAYEE">
-      <Position>4</Position>
-      <DataType>VARCHAR(128)|0s</DataType>
-    </column>
-    <column id="195" parent="169" name="AMOUNT">
-      <Position>5</Position>
-      <DataType>DECIMAL(7,2 digit)|0s</DataType>
-    </column>
-    <column id="196" parent="169" name="DESCRIPTION">
-      <Position>6</Position>
-      <DataType>VARCHAR(128)|0s</DataType>
-    </column>
-    <column id="197" parent="169" name="DATE">
-      <Position>7</Position>
-      <DataType>TIMESTAMP|0s</DataType>
-    </column>
-    <index id="198" parent="169" name="PRIMARY_KEY_F">
-      <ObjectId>19</ObjectId>
-      <NameSurrogate>1</NameSurrogate>
-      <SourceTextLength>71</SourceTextLength>
-      <ColNames>ID</ColNames>
-      <Unique>1</Unique>
-      <AutoCreated>1</AutoCreated>
-    </index>
-    <index id="199" parent="169" name="CONSTRAINT_INDEX_F">
-      <ObjectId>21</ObjectId>
-      <NameSurrogate>1</NameSurrogate>
-      <SourceTextLength>75</SourceTextLength>
+      <SourceTextLength>78</SourceTextLength>
       <ColNames>USER_ID</ColNames>
       <AutoCreated>1</AutoCreated>
     </index>
-    <key id="200" parent="169" name="CONSTRAINT_F">
+    <key id="218" parent="171" name="CONSTRAINT_F">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="201" parent="169" name="CONSTRAINT_FB">
+    <foreign-key id="219" parent="171" name="CONSTRAINT_FB">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USER_ID</ColNames>
       <RefTableName>USERS</RefTableName>
@@ -373,45 +462,45 @@
       <OnDelete>restrict</OnDelete>
       <OnUpdate>restrict</OnUpdate>
     </foreign-key>
-    <column id="202" parent="170" name="ID">
+    <column id="220" parent="172" name="ID">
       <Position>1</Position>
       <DataType>INT|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="203" parent="170" name="PASSWORD">
+    <column id="221" parent="172" name="PASSWORD">
       <Position>2</Position>
       <DataType>VARCHAR(255)|0s</DataType>
     </column>
-    <column id="204" parent="170" name="USERNAME">
+    <column id="222" parent="172" name="USERNAME">
       <Position>3</Position>
       <DataType>VARCHAR(255)|0s</DataType>
     </column>
-    <column id="205" parent="170" name="USERAGE">
+    <column id="223" parent="172" name="USERAGE">
       <Position>4</Position>
       <DataType>INT|0s</DataType>
     </column>
-    <column id="206" parent="170" name="GENDER">
+    <column id="224" parent="172" name="GENDER">
       <Position>5</Position>
       <DataType>VARCHAR(255)|0s</DataType>
     </column>
-    <column id="207" parent="170" name="COUNTRY">
+    <column id="225" parent="172" name="COUNTRY">
       <Position>6</Position>
       <DataType>VARCHAR(255)|0s</DataType>
     </column>
-    <column id="208" parent="170" name="ENABLED">
+    <column id="226" parent="172" name="ENABLED">
       <Position>7</Position>
       <DataType>BOOLEAN|0s</DataType>
     </column>
-    <column id="209" parent="170" name="AUTHORITY">
+    <column id="227" parent="172" name="AUTHORITY">
       <Position>8</Position>
       <DataType>VARCHAR(255)|0s</DataType>
     </column>
-    <column id="210" parent="170" name="EMAIL">
+    <column id="228" parent="172" name="EMAIL">
       <Position>9</Position>
       <DataType>VARCHAR(255)|0s</DataType>
     </column>
-    <index id="211" parent="170" name="PRIMARY_KEY_61">
+    <index id="229" parent="172" name="PRIMARY_KEY_61">
       <ObjectId>5</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <SourceTextLength>70</SourceTextLength>
@@ -419,7 +508,7 @@
       <Unique>1</Unique>
       <AutoCreated>1</AutoCreated>
     </index>
-    <key id="212" parent="170" name="CONSTRAINT_4">
+    <key id="230" parent="172" name="CONSTRAINT_4">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>

@@ -1,13 +1,15 @@
 package by.tms.DNweb.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -19,10 +21,12 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotNull
     private String password;
     @NotNull
+    @NotEmpty(message = "Username should not be empty")
+    @Size(min = 3, max = 10, message = "Username should be between 3 and 10 symbols")
     private String username;
+    @Email
     private String email;
     private int userage;
     private String gender;
@@ -30,6 +34,9 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user")
     private List<Card> cards;
+
+    @OneToMany(mappedBy = "user")
+    private List<Credit> credits;
 
     @OneToMany(mappedBy = "user")
     private List<Payment> payments;
@@ -143,5 +150,13 @@ public class User implements UserDetails {
 
     public void setPayments(List<Payment> payments) {
         this.payments = payments;
+    }
+
+    public List<Credit> getCredits() {
+        return credits;
+    }
+
+    public void setCredits(List<Credit> credits) {
+        this.credits = credits;
     }
 }

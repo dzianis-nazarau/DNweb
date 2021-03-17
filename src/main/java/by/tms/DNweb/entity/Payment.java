@@ -17,6 +17,9 @@ public class Payment {
     private double amount;
     private String description;
     private LocalDateTime date;
+    private String code;
+    private String status;
+    private String type;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -88,6 +91,30 @@ public class Payment {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

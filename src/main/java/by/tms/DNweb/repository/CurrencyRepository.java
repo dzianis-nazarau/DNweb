@@ -7,8 +7,10 @@ import java.util.List;
 
 public interface CurrencyRepository extends CrudRepository<Currency, Integer> {
 
-    List<Currency> findCurrenciesByBaseCurrency(int baseCurrency);
+    List<Currency> findCurrenciesByBaseCurrency(String baseCurrency);
 
-    List<Currency> findAllByBaseCurrency(int baseCurrency);
+    List<Currency> findAllByBaseCurrency(String baseCurrency);
+
+    Currency findCurrencyByBaseCurrencyAndAndRatedCurrency(String base, String rated);
 
 }

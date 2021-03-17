@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%--
   Created by IntelliJ IDEA.
   User: User
@@ -10,13 +11,11 @@
 <html>
 <head>
     <title>Web-Bank</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="import" href="common.html">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script>
-        function magicButtonClick(){
-            /*let xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "/api/v1/registerUser", true);
-            xhttp.setRequestHeader("Content-type", "application/json");
-            xhttp.send('{ "username":"' + document.getElementById('username').value + '" }');*/
+        function registerUser(){
             $.ajax({
                 url:"/api/v1/registerUser",
                 type:"POST",
@@ -62,41 +61,42 @@
 
 </head>
 <body>
+<jsp:include page="common.jsp" />
 <div class="wrapper">
     <div class="left">
         <h3>Web Bank</h3>
-<%--        <img src="https://i.imgur.com/eN4AKys.png" alt="Rocket_image">--%>
+        <img src="image/bank.png" alt="Bank image">
     </div>
     <div class="right">
         <div class="tabs">
             <ul>
-                <li class="register_li">Register</li>
-                <li class="login_li">Login</li>
+                <li class="register_li"><spring:message code="main_registration"/></li>
+                <li class="login_li"><spring:message code="main_login"/></li>
             </ul>
         </div>
 
         <div class="register">
             <div class="input_field">
-                <input type="text" placeholder="Username" class="input" id="username">
+                <input type="text" placeholder=<spring:message code="main_username_placeholder"/> class="input" id="username">
             </div>
             <div class="input_field">
-                <input type="text" placeholder="E-mail" class="input" id="email">
+                <input type="text" placeholder=<spring:message code="main_email_placeholder"/> class="input" id="email">
             </div>
             <div class="input_field">
-                <input type="password" placeholder="Password" class="input" id="password">
+                <input type="password" placeholder=<spring:message code="main_password_placeholder"/> class="input" id="password">
             </div>
-            <input type="button" value="Register" onclick="magicButtonClick()"/>
+            <input type="button" value=<spring:message code="main_registration"/> onclick="registerUser()"/>
         </div>
 
         <div class="login">
             <form method="POST" action="/main">
                 <div class="input_field">
-                    <input type="text" placeholder="Username" class="input" name="user">
+                    <input type="text" placeholder=<spring:message code="main_username_placeholder"/> class="input" name="user">
                 </div>
                 <div class="input_field">
-                    <input type="password" placeholder="Password" class="input" name="pwd">
+                    <input type="password" placeholder=<spring:message code="main_password_placeholder"/> class="input" name="pwd">
                 </div>
-                <input type="submit" value="Login">
+                <input type="submit" value=<spring:message code="main_login"/>>
             </form>
         </div>
 
