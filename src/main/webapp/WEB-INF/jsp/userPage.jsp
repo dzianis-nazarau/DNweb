@@ -104,11 +104,11 @@
         border-radius: 10px;
     }
 
-    #vertical_Menu {
+    #vertical_Menu, #v_Menu {
         width: 200px;
     }
 
-    #vertical_Menu a {
+    #vertical_Menu a, #v_Menu a {
         background-color: #eee;
         color: black;
         display: block;
@@ -116,7 +116,7 @@
         text-decoration: none;
     }
 
-    #vertical_Menu a:hover {
+    #vertical_Menu a:hover, #v_Menu a:hover {
         background-color: #ccc;
     }
 
@@ -190,7 +190,7 @@
 
     }
 
-    function getCards(){
+    function getCards(tagId){
         $.ajax({
             url:"/api/v1/cards",
             success: function(data){
@@ -206,7 +206,7 @@
                 });
                 trHTML += '</table>'
 
-                $('#cards_table').html(trHTML);
+                $(tagId).html(trHTML);
             },
             error: function() {
                 alert("Sorry, something went wrong with cards information");
@@ -214,17 +214,17 @@
         })
     }
 
-    function getCardsSelect(){
+    function getCardsSelect(tagId){
         $.ajax({
             url:"/api/v1/cards",
             success: function(data){
-                let trHTML = '<select id="cardSelector" style="width:20%">\n';
+                let trHTML = '<select id=' + tagId + '_table style="width:20%">\n';
                 $.each(data, function (i, item) {
                     trHTML += '<option>' + item.cardNumber + '</option>';
                 });
                 trHTML += '<option>all cards</option></select>'
 
-                $('#card_select').html(trHTML);
+                $(tagId).html(trHTML);
             },
             error: function() {
                 alert("Sorry, something went wrong with cards information");
@@ -287,6 +287,41 @@
         })
     }
 
+    function deleteCard(cardNumber){
+        $.ajax({
+            url:"/api/v1/deleteCard?cardNumber=" + cardNumber,
+            success: function(){
+                swal("OK", "Card deleted", "success");
+            },
+            error: function() {
+                swal("Bad request", "error");
+            }
+        })
+    }
+
+    function cardInfo(cardNumber){
+        $.ajax({
+            url:"/api/v1/cardInfo?cardNumber=" + cardNumber,
+            success: function(data){
+                let trHTML = '<table id="card_info_result" width="50%">\n' +
+                    '        <tr>\n' +
+                    '            <th><spring:message code="up_tb_cards_cardNumber"/></th>\n' +
+                    '            <th><spring:message code="up_tb_cards_currency"/></th>\n' +
+                    '            <th><spring:message code="up_tb_cards_rest"/></th>\n' +
+                    '            <th><spring:message code="up_tb_cards_status"/></th>\n' +
+                    '            <th><spring:message code="up_tb_cards_type"/></th>\n' +
+                    '        </tr>';
+                trHTML += '<tr><td>' + data.cardNumber + '</td><td>' + data.currency + '</td><td>' + data.rest + '</td>' +
+                    '<td>' + data.status + '</td><td>' + data.type + '</td></tr></table>'
+
+                $('#card_info').html(trHTML);
+            },
+            error: function() {
+                swal("Bad request", "error");
+            }
+        })
+    }
+
     function openPage(pageName, elmnt) {
         let i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -302,8 +337,10 @@
     }
 
     $( window ).on("load", magicButtonClick("BYN"));
-    $( window ).on("load", getCards());
-    $( window ).on("load", getCardsSelect());
+    $( window ).on("load", getCards("#cards_table"));
+    $( window ).on("load", getCards("#CardsLink_cards_table"));
+    $( window ).on("load", getCardsSelect("#card_select"));
+    $( window ).on("load", getCardsSelect("#card_select2"));
     $( window ).on("load", getCredits());
 
 </script>
@@ -321,20 +358,21 @@
 </div>
 <div id="HomeLink" class="tabcontent">
         <div id="cards" class="left_block">
-            <h1><spring:message code="up_upbar_cards"/> <a href=""><img src="image/add.png" alt="HTML tutorial" style="width:25px;height:25px;"></a></h1></br>
+            <h1><spring:message code="up_upbar_cards"/> <a href="/createCard"><img src="image/add.png" alt="+" style="width:25px;height:25px;"></a></h1></br>
             <div id="cards_table"></div>
             <input type="button" class="button" value=<spring:message code="up_btn_refresh"/> onclick="getCards()"/>
+            <br/>
+            <h1><spring:message code="up_credits"/> <a href=""><img src="image/add.png" alt="+" style="width:25px;height:25px;"></a></h1></br>
+            <div id="credits_table"></div>
+            <input type="button" class="button" value=<spring:message code="up_btn_refresh"/> onclick="getCredits()"/>
         </div>
         <div id="currencies" class="right_block">
             <h1><spring:message code="up_currencies"/></h1></br>
             <div id="currencies_table"></div>
             <input type="button" class="button" value=<spring:message code="up_btn_refresh"/> onclick="magicButtonClick(933)"/>
         </div>
-        <div id="credits" class="low_block">
-            <h1><spring:message code="up_credits"/> <a href=""><img src="image/add.png" alt="HTML tutorial" style="width:25px;height:25px;"></a></h1></br>
-            <div id="credits_table"></div>
-            <input type="button" class="button" value=<spring:message code="up_btn_refresh"/> onclick="getCredits()"/>
-        </div>
+<%--        <div id="credits" class="low_block">--%>
+<%--        </div>--%>
 </div>
 
 <div id="PaymentsLink" class="tabcontent">
@@ -342,7 +380,7 @@
         <h1><spring:message code="up_payments_history"/></h1></br>
         <h2><spring:message code="up_payments_select_card"/></h2>
         <div id="card_select"></div>
-        <input type="button" class="button" value=<spring:message code="up_btn_show"/> onclick="getPayments(document.getElementById('cardSelector').value)"/>
+        <input type="button" class="button" value=<spring:message code="up_btn_show"/> onclick="getPayments(document.getElementById('#card_select_table').value)"/>
         <div id="payments">
             <div id="payments_table"></div>
         </div>
@@ -357,9 +395,24 @@
 </div>
 
 <div id="CardsLink" class="tabcontent">
-    <h3>Cards</h3>
-    <p>Get in touch, or swing by for a cup of coffee.</p>
-    <img src="image/bitcoin.png" alt="Card">
+
+    <div class="left_block">
+        <h1><spring:message code="up_cards_management"/></h1></br>
+        <h2><spring:message code="up_payments_select_card"/></h2>
+        <div>
+            <div id="card_select2"></div>
+            <div id="card_info"></div>
+        </div>
+
+        <input type="button" class="button" value=<spring:message code="btn_info"/> onclick="cardInfo(document.getElementById('#card_select2_table').value)"/>
+        <input type="button" class="button" value=<spring:message code="btn_block"/> onclick="deleteCard(document.getElementById('#card_select2_table').value)"/>
+        <input type="button" class="button" value=<spring:message code="btn_delete"/> onclick="deleteCard(document.getElementById('#card_select2_table').value)"/>
+    </div>
+    <div class="right_block" id="v_Menu">
+        <h1 style="text-align: center"><spring:message code="up_payment_operations"/></h1>
+        <a href="/payments"><spring:message code="up_cards_new"/></a>
+    </div>
+
 </div>
 
 <div id="UserLink" class="tabcontent">

@@ -27,6 +27,18 @@ public class PaymentServices {
         return confirmKey;
     }
 
+    //    генерация номера карты
+    public String generateCardNumber() {
+        StringBuilder cardNumber = new StringBuilder();
+        for(int i = 0; i < 4; i++) {
+            cardNumber.append((int)(Math.random() * 8999 + 1001));
+            if(i < 3) {
+                cardNumber.append(" ");
+            };
+        }
+        return cardNumber.toString();
+    }
+
 //    зачисление средств на карту
     public void debit(Card card, double amount) {
         card.setRest(card.getRest() - amount);

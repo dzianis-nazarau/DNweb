@@ -204,5 +204,40 @@ public class APIController {
         return payments;
     }
 
+    @GetMapping(value = "/createCard")
+    public ResponseEntity<String> createCard(@RequestParam String currency, Principal principal) {
+        User user = userRepository.findByUsername(principal.getName());
+        Card card = new Card();
+        card.setCardNumber(paymentServices.generateCardNumber());
+        card.setCurrency(currency);
+        card.setType("debit");
+        card.setStatus("active");
+        card.setRest(0);
+        card.setUser(user);
+        cardRepository.save(card);
+        return new ResponseEntity<>("null", HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/deleteCard")
+    public ResponseEntity<String> deleteCard(@RequestParam String cardNumber) {
+        try {
+            Card card = cardRepository.findCardByCardNumber(cardNumber);
+            cardRepository.delete(card);
+            return new ResponseEntity<>("Card deleted", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("something went wrong", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping(value = "/cardInfo")
+    public ResponseEntity<?> getCardInfo(@RequestParam String cardNumber) {
+        try {
+            Card card = cardRepository.findCardByCardNumber(cardNumber);
+            return new ResponseEntity<>(card, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("something went wrong", HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }
 

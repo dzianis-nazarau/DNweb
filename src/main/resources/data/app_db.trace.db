@@ -4961,3 +4961,57 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-03-18 14:51:24 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:495)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-03-19 01:09:34 database: flush
+org.h2.message.DbException: Внутренняя ошибка: "java.lang.IllegalStateException: Could not truncate file nio:C:/Users/User/Desktop/DNweb/src/main/resources/data/app_db.mv.db to size 57344 [1.4.200/2]"
+General error: "java.lang.IllegalStateException: Could not truncate file nio:C:/Users/User/Desktop/DNweb/src/main/resources/data/app_db.mv.db to size 57344 [1.4.200/2]" [50000-200]
+	at org.h2.message.DbException.get(DbException.java:194)
+	at org.h2.message.DbException.convert(DbException.java:347)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2877)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:481)
+	at org.h2.mvstore.MVStore.store(MVStore.java:1336)
+	at org.h2.mvstore.MVStore.compactMoveChunks(MVStore.java:1866)
+	at org.h2.mvstore.MVStore.compactMoveChunks(MVStore.java:1772)
+	at org.h2.mvstore.MVStore.doMaintenance(MVStore.java:2848)
+	at org.h2.mvstore.MVStore.writeInBackground(MVStore.java:2788)
+	at org.h2.mvstore.MVStore$BackgroundWriterThread.run(MVStore.java:3290)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "java.lang.IllegalStateException: Could not truncate file nio:C:/Users/User/Desktop/DNweb/src/main/resources/data/app_db.mv.db to size 57344 [1.4.200/2]"
+General error: "java.lang.IllegalStateException: Could not truncate file nio:C:/Users/User/Desktop/DNweb/src/main/resources/data/app_db.mv.db to size 57344 [1.4.200/2]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 11 more
+Caused by: java.lang.IllegalStateException: Could not truncate file nio:C:/Users/User/Desktop/DNweb/src/main/resources/data/app_db.mv.db to size 57344 [1.4.200/2]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
+	at org.h2.mvstore.FileStore.truncate(FileStore.java:245)
+	at org.h2.mvstore.MVStore.shrinkFileIfPossible(MVStore.java:1653)
+	at org.h2.mvstore.MVStore.storeNow(MVStore.java:1526)
+	at org.h2.mvstore.MVStore.store(MVStore.java:1334)
+	... 5 more
+Caused by: java.io.IOException: Запрошенную операцию нельзя выполнить для файла с открытой пользователем сопоставленной секцией
+	at java.base/sun.nio.ch.FileDispatcherImpl.truncate0(Native Method)
+	at java.base/sun.nio.ch.FileDispatcherImpl.truncate(FileDispatcherImpl.java:90)
+	at java.base/sun.nio.ch.FileChannelImpl.truncate(FileChannelImpl.java:430)
+	at org.h2.store.fs.FileNio.truncate(FilePathNio.java:87)
+	at org.h2.mvstore.FileStore.truncate(FileStore.java:240)
+	... 8 more

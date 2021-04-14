@@ -22,4 +22,8 @@ public class UserPageController {
         return "userPage";
     }
 
+    @GetMapping("/createCard")
+    public String createCard() {
+        return "createCard";
+    }
 }
